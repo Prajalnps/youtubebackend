@@ -2,9 +2,10 @@
   "name": "youtubebackend",
   "version": "1.0.0",
   "description": "a backend for youtube",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [
     "javascript",
@@ -12,5 +13,8 @@
     "youtube"
   ],
   "author": "Prajal Rana",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
 }
