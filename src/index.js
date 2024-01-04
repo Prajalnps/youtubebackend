@@ -1,6 +1,7 @@
 // require('dotenv').config({ path: './env' });
 import dotenv from "dotenv"
-import connectDB from "./db/connect.js";
+import connectDB from "./db/connect.js"
+import { app } from "./app.js"
 
 dotenv.config({
     path: './env',
@@ -14,7 +15,16 @@ Second approach, better one, another file from db folder, connect db in that fil
 export that file and import in index.js file
 */
 
-connectDB;
+connectDB()
+    .then(() => {
+        //listen to server start after db connection
+        app.listen(process.env.PORT || 8000, () => {
+            console.log(`Server is running in port: ${process.env.PORT}`)
+        }) //default port 8000
+    })
+    .catch((err) => {
+        console.log("Mongo DB connection failed !!!", err)
+    })
 
 
 
